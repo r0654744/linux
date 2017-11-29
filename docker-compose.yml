@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+ mysql:  
+  build: ./SQL
+  ports:
+   - 3306:3306
+  environment:
+   MYSQL_ROOT_PASSWORD: 'root'
+   MYSQL_ROOT_HOST: '%'  
+ website:
+  build: ./Website
+  ports: 
+   - 8080:80 
+  links:
+   - mysql:database
